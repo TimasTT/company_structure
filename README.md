@@ -1,1 +1,1 @@
-# company_structure
+# Company structure

@@ -4,3 +4,4 @@ add_library(company_structure STATIC
 
 target_include_directories(company_structure PUBLIC
         include)
+target_link_libraries(company_structure commands)

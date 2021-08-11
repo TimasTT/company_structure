@@ -11,4 +11,4 @@ add_library(main_window STATIC
 target_include_directories(main_window PUBLIC
     main_window/)
 target_link_libraries(main_window PUBLIC
-    Qt6::Widgets)
+    ${LIBS} Qt6::Widgets)

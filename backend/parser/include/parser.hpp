@@ -1,0 +1,8 @@
+//
+// Created by timas on 12.08.2021.
+//
+
+#ifndef COMPANY_STRUCTURE_PARSER_HPP
+#define COMPANY_STRUCTURE_PARSER_HPP
+
+#endif //COMPANY_STRUCTURE_PARSER_HPP

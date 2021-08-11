@@ -17,4 +17,4 @@ add_subdirectory(backend)
 
 add_executable(company_structure_main main.cpp)
 
-target_link_libraries(company_structure_main main_window)
+target_link_libraries(company_structure_main main_window ${company_structure_libs})

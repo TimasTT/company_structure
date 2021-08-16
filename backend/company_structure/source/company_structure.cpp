@@ -37,11 +37,39 @@ namespace cstruct {
         avrgSalary = avrgSalaryCalculation(workers);
     }
 
-    void Company::addDepartment(Department &&department_) {
-        company.emplace_back(std::move(department_));
+    const std::string& Department::getName() {
+        return name;
     }
 
     const std::vector <Worker> &Department::getDepartment() {
         return workers;
+    }
+
+
+    Company::Company() = default;
+
+    const std::vector<Department> &Company::getCompany() {
+        return company;
+    }
+
+    void Company::addDepartment(Department &&department_) {
+        company.emplace_back(std::move(department_));
+    }
+
+    void Company::deleteDepartment(std::string& name) {
+        for (size_t i = 0; i < getCompany().size(); ++i) {
+            if (getCompany()[i].name == name) {
+                company.erase(company.begin() + i);
+                break;
+            }
+        }
+    }
+
+    const std::vector<std::string>& Company::showCompany(std::vector<std::string>& companyTree) {
+        for (const auto& department : getCompany()) {
+            companyTree.push_back(department.name);
+        }
+
+        return companyTree;
     }
 }

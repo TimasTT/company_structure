@@ -9,11 +9,12 @@
 #include <QUndoStack>
 #include <QAction>
 
+#include "company_structure.hpp"
+
 class QListWidget;
 
 class STaskPool: public QObject {
 private:
-
     QUndoStack stack;
 
     QListWidget* widget;
@@ -22,6 +23,8 @@ private:
 
     QAction* undo_;
     QAction* redo_;
+
+    std::shared_ptr<cstruct::Company> company;
 
 public:
     explicit STaskPool(QObject* parent = nullptr);
@@ -35,7 +38,10 @@ public:
     signals:
 
 public
-    slots: void addTask();
+    slots:
+    void addTask();
+
+    void addDepartment(std::string &&);
 };
 
 

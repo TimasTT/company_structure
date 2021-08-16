@@ -12,13 +12,17 @@ namespace cstruct {
     class Company;
     class Department;
 
-    struct Worker {
+    class Worker {
+    private:
+        friend Department;
+
         std::string name;
 
         std::string position;
 
         int salary;
 
+    public:
         Worker(std::string &, std::string &, int);
     };
 
@@ -41,6 +45,8 @@ namespace cstruct {
 
         void recalculateAvrgSalary();
 
+        const std::string& getName();
+
         const std::vector <Worker> &getDepartment();
     };
 
@@ -53,7 +59,11 @@ namespace cstruct {
 
         void addDepartment(Department &&);
 
+        void deleteDepartment(std::string& name);
+
         const std::vector<Department>& getCompany();
+
+        const std::vector<std::string>& showCompany(std::vector<std::string>&);
     };
 
 }

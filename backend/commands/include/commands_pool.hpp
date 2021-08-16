@@ -11,9 +11,11 @@
 
 #include "company_structure.hpp"
 
+class STask;
 class QListWidget;
 
 class STaskPool: public QObject {
+
 private:
     QUndoStack stack;
 

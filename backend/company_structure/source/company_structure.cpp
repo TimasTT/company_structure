@@ -3,6 +3,7 @@
 //
 
 #include <vector>
+#include <iostream>
 
 #include "company_structure.hpp"
 
@@ -52,13 +53,15 @@ namespace cstruct {
         return company;
     }
 
-    void Company::addDepartment(Department &&department_) {
-        company.emplace_back(std::move(department_));
+    void Company::addDepartment(std::string& name) {
+        Department newDepartment(name);
+        company.emplace_back(newDepartment);
     }
 
     void Company::deleteDepartment(std::string& name) {
+        std::string name_dep = name;
         for (size_t i = 0; i < getCompany().size(); ++i) {
-            if (getCompany()[i].name == name) {
+            if (company[i].name == name) {
                 company.erase(company.begin() + i);
                 break;
             }

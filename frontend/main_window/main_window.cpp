@@ -26,6 +26,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    pool->addDepartment("std::string(");
+    pool->addDepartment("department");
 }
 

@@ -15,6 +15,10 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 add_subdirectory(frontend)
 add_subdirectory(backend)
 
-add_executable(company_structure_main main.cpp)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+add_executable(company_structure_main main.cpp)
 target_link_libraries(company_structure_main main_window ${company_structure_libs})

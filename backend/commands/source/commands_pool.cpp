@@ -37,4 +37,3 @@ void STaskPool::addDepartment(std::string &&department_name) {
     AddDepartment* task = new AddDepartment(widget, last_id++, department_name, company);
     stack.push(task);
 }
-

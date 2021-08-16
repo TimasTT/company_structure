@@ -32,7 +32,7 @@ private:
 
     int task_id;
 
-    std::string& department_name;
+    std::string department_name;
 
     std::shared_ptr<cstruct::Company> company;
 

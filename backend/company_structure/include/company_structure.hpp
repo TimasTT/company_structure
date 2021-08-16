@@ -57,9 +57,9 @@ namespace cstruct {
     public:
         Company();
 
-        void addDepartment(Department &&);
+        void addDepartment(std::string& name);
 
-        void deleteDepartment(std::string& name);
+        void deleteDepartment(std::string &name);
 
         const std::vector<Department>& getCompany();
 

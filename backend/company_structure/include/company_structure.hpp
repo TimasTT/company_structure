@@ -8,24 +8,17 @@
 #include <string>
 #include <vector>
 
-#pragma once
-#include "commands.hpp"
-
 namespace cstruct {
     class Company;
     class Department;
 
     struct Worker {
-    private:
-        friend Department;
-
         std::string name;
 
         std::string position;
 
         int salary;
 
-    private:
         Worker(std::string &, std::string &, int);
     };
 
@@ -41,7 +34,7 @@ namespace cstruct {
 
         std::string name;
 
-    private:
+    public:
         Department(std::string &);
 
         void addWorker(Worker &&);
@@ -55,7 +48,7 @@ namespace cstruct {
     private:
         std::vector<Department> company;
 
-    private:
+    public:
         Company();
 
         void addDepartment(Department &&);

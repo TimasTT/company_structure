@@ -28,11 +28,6 @@ QAction* STaskPool::getRedoCommand() {
     return redo_;
 }
 
-void STaskPool::addTask() {
-    STask* task = new STask(widget, last_id++);
-    stack.push(task);
-}
-
 void STaskPool::addDepartment(std::string &&department_name) {
     AddDepartment* task = new AddDepartment(widget, last_id++, department_name, company);
     stack.push(task);

@@ -11,21 +11,6 @@
 
 class QListWidget;
 
-class STask: public QUndoCommand {
-private:
-    QListWidget* widget;
-
-    int task_id;
-
-public:
-    STask(QListWidget*, int);
-
-    void undo();
-
-    void redo();
-};
-
-
 class AddDepartment: public QUndoCommand {
 private:
     QListWidget* widget;

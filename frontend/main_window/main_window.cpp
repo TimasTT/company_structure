@@ -1,9 +1,11 @@
+#include <qaction.h>
+
 #include "main_window.h"
 #include "./ui_main_window.h"
 #include "commands_pool.hpp"
 #include "commands_tasks.hpp"
-
-#include <qaction.h>
+#include "add_department_window/add_department.h"
+#include "delete_department_window/delete_department.h"
 
 MainWindow::MainWindow(STaskPool* pool_, QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +28,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    pool->addDepartment("department");
+    add_department addDepartmentWindow;
+    addDepartmentWindow.setModal(true);
+    addDepartmentWindow.exec();
+
+    pool->addDepartment(addDepartmentWindow.getName());
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    delete_department deleteDepartmentWindow;
+    deleteDepartmentWindow.setModal(true);
+    deleteDepartmentWindow.exec();
+
+    pool->deleteDepartment(deleteDepartmentWindow.getName());
 }
 

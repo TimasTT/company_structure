@@ -8,7 +8,14 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_library(main_window STATIC
     main_window/main_window.cpp
     main_window/main_window.h
-    main_window/main_window.ui)
+    main_window/main_window.ui
+    add_department_window/add_department.cpp
+    add_department_window/add_department.h
+    add_department_window/add_department.ui
+    delete_department_window/delete_department.cpp
+    delete_department_window/delete_department.h
+    delete_department_window/delete_department.ui
+    )
 target_include_directories(main_window PUBLIC
     main_window/)
 target_link_libraries(main_window PUBLIC

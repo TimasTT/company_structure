@@ -43,7 +43,9 @@ public
     slots:
     void addTask();
 
-    void addDepartment(std::string &&);
+    void addDepartment(std::string &);
+
+    void deleteDepartment(std::string &);
 };
 
 

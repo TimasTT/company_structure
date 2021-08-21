@@ -49,7 +49,7 @@ namespace cstruct {
 
     Company::Company() = default;
 
-    const std::vector<Department> &Company::getCompany() {
+    const std::vector<Department> &Company::getCompany() const {
         return company;
     }
 
@@ -59,7 +59,6 @@ namespace cstruct {
     }
 
     void Company::deleteDepartment(std::string& name) {
-        std::string name_dep = name;
         for (size_t i = 0; i < getCompany().size(); ++i) {
             if (company[i].name == name) {
                 company.erase(company.begin() + i);
@@ -74,5 +73,14 @@ namespace cstruct {
         }
 
         return companyTree;
+    }
+
+    bool Company::isMember(std::string &name) {
+        for (size_t i = 0; i < getCompany().size(); ++i) {
+            if (company[i].name == name) {
+                return true;
+            }
+        }
+        return false;
     }
 }

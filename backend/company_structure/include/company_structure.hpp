@@ -61,7 +61,9 @@ namespace cstruct {
 
         void deleteDepartment(std::string &name);
 
-        const std::vector<Department>& getCompany();
+        bool isMember(std::string &name);
+
+        const std::vector<Department>& getCompany() const;
 
         const std::vector<std::string>& showCompany(std::vector<std::string>&);
     };

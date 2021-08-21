@@ -27,6 +27,29 @@ public:
     void undo();
 
     void redo();
+
+    void show();
+};
+
+
+class DeleteDepartment: public QUndoCommand {
+private:
+    QListWidget* widget;
+
+    int task_id;
+
+    std::string department_name;
+
+    std::shared_ptr<cstruct::Company> company;
+
+public:
+    DeleteDepartment(QListWidget*, int, std::string &, std::shared_ptr<cstruct::Company>&);
+
+    void undo();
+
+    void redo();
+
+    void show();
 };
 
 #endif //COMPANY_STRUCTURE_COMMANDS_TASKS_HPP

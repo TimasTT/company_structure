@@ -28,7 +28,16 @@ QAction* STaskPool::getRedoCommand() {
     return redo_;
 }
 
-void STaskPool::addDepartment(std::string &&department_name) {
+void STaskPool::addDepartment(std::string &department_name) {
     AddDepartment* task = new AddDepartment(widget, last_id++, department_name, company);
+    stack.push(task);
+}
+
+void STaskPool::deleteDepartment(std::string &department_name) {
+    if (!company->isMember(department_name)) {
+        return;
+    }
+
+    DeleteDepartment* task = new DeleteDepartment(widget, last_id++, department_name, company);
     stack.push(task);
 }

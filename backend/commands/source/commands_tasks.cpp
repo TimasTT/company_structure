@@ -14,6 +14,16 @@ AddDepartment::AddDepartment(QListWidget* widget_, int task_id_, std::string& de
 void AddDepartment::redo(){
     company->addDepartment(department_name);
 
+    show();
+}
+
+void AddDepartment::undo() {
+    company->deleteDepartment(department_name);
+
+    show();
+}
+
+void AddDepartment::show() {
     widget->clear();
     std::vector<std::string> companyTree;
     company->showCompany(companyTree);
@@ -23,9 +33,23 @@ void AddDepartment::redo(){
     }
 }
 
-void AddDepartment::undo() {
+
+DeleteDepartment::DeleteDepartment(QListWidget* widget_, int task_id_, std::string& department_name_, std::shared_ptr<cstruct::Company>& company_)
+    : widget(widget_), task_id(task_id_), department_name(department_name_), company(company_) {}
+
+void DeleteDepartment::redo(){
     company->deleteDepartment(department_name);
 
+    show();
+}
+
+void DeleteDepartment::undo() {
+    company->addDepartment(department_name);
+
+    show();
+}
+
+void DeleteDepartment::show() {
     widget->clear();
     std::vector<std::string> companyTree;
     company->showCompany(companyTree);

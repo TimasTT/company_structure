@@ -15,6 +15,15 @@ add_library(main_window STATIC
     delete_department_window/delete_department.cpp
     delete_department_window/delete_department.h
     delete_department_window/delete_department.ui
+    add_worker_window/add_worker_window.cpp
+    add_worker_window/add_worker_window.h
+    add_worker_window/add_worker_window.ui
+    delete_worker_window/delete_worker.cpp
+    delete_worker_window/delete_worker.h
+    delete_worker_window/delete_worker.ui
+    change_department_name_window/change_department_name.cpp
+    change_department_name_window/change_department_name.h
+    change_department_name_window/change_department_name.ui
     )
 target_include_directories(main_window PUBLIC
     main_window/)

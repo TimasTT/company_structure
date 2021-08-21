@@ -6,61 +6,49 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>323</width>
-    <height>152</height>
+    <width>317</width>
+    <height>154</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QGroupBox" name="groupBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>16</y>
-     <width>299</width>
-     <height>78</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Delete department</string>
-   </property>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>275</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout_3">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Department name</string>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Delete department</string>
        </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Department name</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="departmentName"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="departmentName"/>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Delete department</string>
+       </property>
+      </widget>
      </item>
     </layout>
-   </widget>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>100</y>
-     <width>299</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Delete department</string>
-   </property>
-  </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

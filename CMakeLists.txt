@@ -9,8 +9,7 @@ option(BUILD_COVERAGE "Build coverage" OFF)
 project(rw VERSION 1.1.0)
 
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Wall -Wextra")
-string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
-string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
+string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor -Wno-return-type")
 
 add_subdirectory(frontend)
 add_subdirectory(backend)

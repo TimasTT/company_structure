@@ -46,6 +46,12 @@ public
     void addDepartment(std::string &);
 
     void deleteDepartment(std::string &);
+
+    void addWorker(std::string &, std::string &, std::string &, int);
+
+    void deleteWorker(std::string &, std::string &);
+
+    void changeDepartmentName(std::string &, std::string &);
 };
 
 

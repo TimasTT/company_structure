@@ -28,16 +28,46 @@ QAction* STaskPool::getRedoCommand() {
     return redo_;
 }
 
-void STaskPool::addDepartment(std::string &department_name) {
-    AddDepartment* task = new AddDepartment(widget, last_id++, department_name, company);
+void STaskPool::addDepartment(std::string &departmentName) {
+    AddDepartment* task = new AddDepartment(widget, last_id++, departmentName, company);
     stack.push(task);
 }
 
-void STaskPool::deleteDepartment(std::string &department_name) {
-    if (!company->isMember(department_name)) {
+void STaskPool::deleteDepartment(std::string &departmentName) {
+    if (!company->isMember(departmentName)) {
         return;
     }
 
-    DeleteDepartment* task = new DeleteDepartment(widget, last_id++, department_name, company);
+    DeleteDepartment* task = new DeleteDepartment(widget, last_id++, departmentName, company);
+    stack.push(task);
+}
+
+void STaskPool::addWorker(std::string &departmentName, std::string &workerName, std::string &workerPosition, int workerSalary) {
+    if (!company->isMember(departmentName)) {
+        return;
+    }
+
+    AddWorker* task = new AddWorker(widget, last_id++, departmentName, workerName, workerPosition, workerSalary, company);
+    stack.push(task);
+}
+
+void STaskPool::deleteWorker(std::string &departmentName, std::string &workerName) {
+    if (!company->isMember(departmentName)) {
+        return;
+    }
+    if (!company->getDepartment(departmentName).isMember(workerName)) {
+        return;
+    }
+
+    DeleteWorker* task = new DeleteWorker(widget, last_id++, departmentName, workerName, company);
+    stack.push(task);
+}
+
+void STaskPool::changeDepartmentName(std::string &departmentLastName, std::string &departmentNewName) {
+    if (!company->isMember(departmentLastName)) {
+        return;
+    }
+
+    ChangeDepartmentName* task = new ChangeDepartmentName(widget, last_id++, departmentLastName, departmentNewName, company);
     stack.push(task);
 }

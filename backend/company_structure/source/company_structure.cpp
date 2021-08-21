@@ -12,6 +12,30 @@ namespace cstruct {
     Worker::Worker(std::string &name_, std::string &position_, int salary_)
             : name(name_), position(position_), salary(salary_) {}
 
+    std::string& Worker::getName() {
+        return name;
+    }
+
+    std::string& Worker::getPosition() {
+        return position;
+    }
+
+    int Worker::getSalary() {
+        return salary;
+    }
+
+    void Worker::setNewName(std::string &newName) {
+        name = newName;
+    }
+
+    void Worker::setNewPosition(std::string &newPosition) {
+        position = newPosition;
+    }
+
+    void Worker::setNewSalary(int newSalary) {
+        salary = newSalary;
+    }
+
 
     Department::Department(std::string& name_): name(name_) {
         avrgSalary = 0;
@@ -26,30 +50,79 @@ namespace cstruct {
     }
 
     void Department::recalculateAvrgSalary() {
-        auto avrgSalaryCalculation = [&](const std::vector <Worker> &workers_) {
+        auto avrgSalaryCalculation = [&]() {
+            if (workersNumber == 0) {
+                return 0;
+            }
             int avrgSalary_ = 0;
-            for (const auto &worker : workers_) {
+            for (auto &worker : workers) {
                 avrgSalary_ += worker.salary;
             }
 
-            return avrgSalary_ / workers_.size();
+            return avrgSalary_ / workersNumber;
         };
 
-        avrgSalary = avrgSalaryCalculation(workers);
+        avrgSalary = avrgSalaryCalculation();
     }
 
     const std::string& Department::getName() {
         return name;
     }
 
-    const std::vector <Worker> &Department::getDepartment() {
+    std::vector <Worker> &Department::getDepartment() {
         return workers;
+    }
+
+    void Department::showWorkers(std::vector<std::string> &workers_) {
+        for (auto& worker : workers) {
+            workers_.emplace_back(worker.name);
+        }
+    }
+
+    bool Department::isEmpty() {
+        if (workers.size() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    bool Department::isMember(std::string &workerName) {
+        for (const auto &worker : workers) {
+            if (worker.name == workerName) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    void Department::deleteWorker(std::string& workerName) {
+        for (size_t i = 0; i < workers.size(); ++i) {
+            if (workers[i].getName() == workerName) {
+                workers.erase(workers.begin() + i);
+                workersNumber--;
+                break;
+            }
+        }
+    }
+
+    int Department::getWorkersNumber() {
+        return workersNumber;
+    }
+
+    int Department::getAvrgSalary() {
+        return avrgSalary;
+    }
+
+    void Department::setNewName(std::string &newName) {
+        name = newName;
     }
 
 
     Company::Company() = default;
 
-    const std::vector<Department> &Company::getCompany() const {
+    std::vector<Department> &Company::getCompany() {
         return company;
     }
 
@@ -82,5 +155,13 @@ namespace cstruct {
             }
         }
         return false;
+    }
+
+    Department& Company::getDepartment(const std::string &name) {
+        for (size_t i = 0; i < getCompany().size(); ++i) {
+            if (company[i].name == name) {
+                return company[i];
+            }
+        }
     }
 }

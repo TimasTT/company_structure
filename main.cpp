@@ -10,8 +10,8 @@
 
 int main(int argc, char* argv[]) {
     QApplication a(argc, argv);
-    STaskPool taskPool;
-    MainWindow w(&taskPool);
+    STaskPool* taskPool = new STaskPool;
+    MainWindow w(taskPool);
     w.show();
 
     return a.exec();

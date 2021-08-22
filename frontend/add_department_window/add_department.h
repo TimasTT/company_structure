@@ -4,24 +4,24 @@
 #include <QDialog>
 
 namespace Ui {
-class add_department;
+    class add_department;
 }
 
-class add_department : public QDialog
-{
+class add_department: public QDialog {
     Q_OBJECT
 
 public:
-    explicit add_department(QWidget *parent = nullptr);
+    explicit add_department(QWidget* parent = nullptr);
+
     ~add_department();
 
-    std::string& getName();
+    std::string &getName();
 
-private slots:
-    void on_pushButton_clicked();
+private
+    slots: void on_pushButton_clicked();
 
 private:
-    Ui::add_department *ui;
+    Ui::add_department* ui;
 
     std::string name;
 };

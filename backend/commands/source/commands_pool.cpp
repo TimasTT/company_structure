@@ -71,3 +71,53 @@ void STaskPool::changeDepartmentName(std::string &departmentLastName, std::strin
     ChangeDepartmentName* task = new ChangeDepartmentName(widget, last_id++, departmentLastName, departmentNewName, company);
     stack.push(task);
 }
+
+void STaskPool::changeWorkerAll(std::string &departmentName, std::string &workerLastName, std::string &workerNewName,
+                                std::string &workerNewPosition, int workerNewSalary) {
+    if (!company->isMember(departmentName)) {
+        return;
+    }
+    if (!company->getDepartment(departmentName).isMember(workerLastName)) {
+        return;
+    }
+
+    ChangeWorkerAll* task = new ChangeWorkerAll(widget, last_id++, departmentName, workerLastName, workerNewName, workerNewPosition,
+                                                workerNewSalary, company);
+    stack.push(task);
+}
+
+void STaskPool::changeWorkerName(std::string &departmentName, std::string &workerLastName, std::string &workerNewName) {
+    if (!company->isMember(departmentName)) {
+        return;
+    }
+    if (!company->getDepartment(departmentName).isMember(workerLastName)) {
+        return;
+    }
+
+    ChangeWorkerName* task = new ChangeWorkerName(widget, last_id++, departmentName, workerLastName, workerNewName, company);
+    stack.push(task);
+}
+
+void STaskPool::changeWorkerPosition(std::string &departmentName, std::string &workerName, std::string &workerNewPosition) {
+    if (!company->isMember(departmentName)) {
+        return;
+    }
+    if (!company->getDepartment(departmentName).isMember(workerName)) {
+        return;
+    }
+
+    ChangeWorkerPosition* task = new ChangeWorkerPosition(widget, last_id++, departmentName, workerName, workerNewPosition, company);
+    stack.push(task);
+}
+
+void STaskPool::changeWorkerSalary(std::string &departmentName, std::string &workerName, int workerNewSalary) {
+    if (!company->isMember(departmentName)) {
+        return;
+    }
+    if (!company->getDepartment(departmentName).isMember(workerName)) {
+        return;
+    }
+
+    ChangeWorkerSalary* task = new ChangeWorkerSalary(widget, last_id++, departmentName, workerName, workerNewSalary, company);
+    stack.push(task);
+}

@@ -12,11 +12,11 @@ namespace cstruct {
     Worker::Worker(std::string &name_, std::string &position_, int salary_)
             : name(name_), position(position_), salary(salary_) {}
 
-    std::string& Worker::getName() {
+    std::string &Worker::getName() {
         return name;
     }
 
-    std::string& Worker::getPosition() {
+    std::string &Worker::getPosition() {
         return position;
     }
 
@@ -37,7 +37,8 @@ namespace cstruct {
     }
 
 
-    Department::Department(std::string& name_): name(name_) {
+    Department::Department(std::string &name_)
+            : name(name_) {
         avrgSalary = 0;
         workersNumber = 0;
     }
@@ -65,7 +66,7 @@ namespace cstruct {
         avrgSalary = avrgSalaryCalculation();
     }
 
-    const std::string& Department::getName() {
+    const std::string &Department::getName() {
         return name;
     }
 
@@ -73,8 +74,8 @@ namespace cstruct {
         return workers;
     }
 
-    void Department::showWorkers(std::vector<std::string> &workers_) {
-        for (auto& worker : workers) {
+    void Department::showWorkers(std::vector <std::string> &workers_) {
+        for (auto &worker : workers) {
             workers_.emplace_back(worker.name);
         }
     }
@@ -97,7 +98,7 @@ namespace cstruct {
         return false;
     }
 
-    void Department::deleteWorker(std::string& workerName) {
+    void Department::deleteWorker(std::string &workerName) {
         for (size_t i = 0; i < workers.size(); ++i) {
             if (workers[i].getName() == workerName) {
                 workers.erase(workers.begin() + i);
@@ -122,16 +123,16 @@ namespace cstruct {
 
     Company::Company() = default;
 
-    std::vector<Department> &Company::getCompany() {
+    std::vector <Department> &Company::getCompany() {
         return company;
     }
 
-    void Company::addDepartment(std::string& name) {
+    void Company::addDepartment(std::string &name) {
         Department newDepartment(name);
         company.emplace_back(newDepartment);
     }
 
-    void Company::deleteDepartment(std::string& name) {
+    void Company::deleteDepartment(std::string &name) {
         for (size_t i = 0; i < getCompany().size(); ++i) {
             if (company[i].name == name) {
                 company.erase(company.begin() + i);
@@ -140,8 +141,8 @@ namespace cstruct {
         }
     }
 
-    const std::vector<std::string>& Company::showCompany(std::vector<std::string>& companyTree) {
-        for (const auto& department : getCompany()) {
+    const std::vector <std::string> &Company::showCompany(std::vector <std::string> &companyTree) {
+        for (const auto &department : getCompany()) {
             companyTree.push_back(department.name);
         }
 
@@ -157,7 +158,7 @@ namespace cstruct {
         return false;
     }
 
-    Department& Company::getDepartment(const std::string &name) {
+    Department &Company::getDepartment(const std::string &name) {
         for (size_t i = 0; i < getCompany().size(); ++i) {
             if (company[i].name == name) {
                 return company[i];

@@ -10,6 +10,7 @@
 
 namespace cstruct {
     class Company;
+
     class Department;
 
     class Worker {
@@ -25,9 +26,9 @@ namespace cstruct {
     public:
         Worker(std::string &, std::string &, int);
 
-        std::string& getName();
+        std::string &getName();
 
-        std::string& getPosition();
+        std::string &getPosition();
 
         int getSalary();
 
@@ -60,7 +61,7 @@ namespace cstruct {
 
         void recalculateAvrgSalary();
 
-        const std::string& getName();
+        const std::string &getName();
 
         bool isEmpty();
 
@@ -72,7 +73,7 @@ namespace cstruct {
 
         int getAvrgSalary();
 
-        void showWorkers(std::vector<std::string> &);
+        void showWorkers(std::vector <std::string> &);
 
         void setNewName(std::string &);
     };
@@ -80,22 +81,22 @@ namespace cstruct {
 
     class Company {
     private:
-        std::vector<Department> company;
+        std::vector <Department> company;
 
     public:
         Company();
 
-        void addDepartment(std::string& name);
+        void addDepartment(std::string &name);
 
         void deleteDepartment(std::string &name);
 
         bool isMember(std::string &name);
 
-        std::vector<Department>& getCompany();
+        std::vector <Department> &getCompany();
 
-        const std::vector<std::string>& showCompany(std::vector<std::string>&);
+        const std::vector <std::string> &showCompany(std::vector <std::string> &);
 
-        Department& getDepartment(const std::string&);
+        Department &getDepartment(const std::string &);
     };
 
 }

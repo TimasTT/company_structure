@@ -4,26 +4,26 @@
 #include <QDialog>
 
 namespace Ui {
-class delete_worker;
+    class delete_worker;
 }
 
-class delete_worker : public QDialog
-{
+class delete_worker: public QDialog {
     Q_OBJECT
 
 public:
-    explicit delete_worker(QWidget *parent = nullptr);
+    explicit delete_worker(QWidget* parent = nullptr);
+
     ~delete_worker();
 
-    std::string& getDepartmentName();
+    std::string &getDepartmentName();
 
-    std::string& getWorkerName();
+    std::string &getWorkerName();
 
-private slots:
-    void on_pushButton_clicked();
+private
+    slots: void on_pushButton_clicked();
 
 private:
-    Ui::delete_worker *ui;
+    Ui::delete_worker* ui;
 
     std::string departmentName;
 

@@ -1,20 +1,16 @@
 #include "add_worker_window.h"
 #include "ui_add_worker_window.h"
 
-add_worker_window::add_worker_window(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::add_worker_window)
-{
+add_worker_window::add_worker_window(QWidget* parent)
+        : QDialog(parent), ui(new Ui::add_worker_window) {
     ui->setupUi(this);
 }
 
-add_worker_window::~add_worker_window()
-{
+add_worker_window::~add_worker_window() {
     delete ui;
 }
 
-void add_worker_window::on_pushButton_clicked()
-{
+void add_worker_window::on_pushButton_clicked() {
     departmentName = ui->departmentName->text().toStdString();
     workerName = ui->workerName->text().toStdString();
     workerPosition = ui->workerPosition->text().toStdString();
@@ -23,15 +19,15 @@ void add_worker_window::on_pushButton_clicked()
     close();
 }
 
-std::string& add_worker_window::getDepartmentName() {
+std::string &add_worker_window::getDepartmentName() {
     return departmentName;
 }
 
-std::string& add_worker_window::getWorkerName() {
+std::string &add_worker_window::getWorkerName() {
     return workerName;
 }
 
-std::string& add_worker_window::getWorkerPosition() {
+std::string &add_worker_window::getWorkerPosition() {
     return workerPosition;
 }
 

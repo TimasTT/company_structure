@@ -9,18 +9,20 @@ QT_END_NAMESPACE
 
 class STaskPool;
 
-class MainWindow : public QMainWindow
-{
+class MainWindow: public QMainWindow {
     Q_OBJECT
 
-    STaskPool *pool;
+            STaskPool
+    *
+    pool;
 
 public:
-    MainWindow(STaskPool *pool_, QWidget *parent = nullptr);
+    MainWindow(STaskPool* pool_, QWidget* parent = nullptr);
+
     ~MainWindow();
 
-private slots:
-    void on_pushButton_clicked();
+private
+    slots: void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
 
@@ -30,7 +32,10 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void on_pushButton_6_clicked();
+
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow* ui;
 };
+
 #endif // MAINWINDOW_H

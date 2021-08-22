@@ -12,6 +12,7 @@
 #include "company_structure.hpp"
 
 class STask;
+
 class QListWidget;
 
 class STaskPool: public QObject {
@@ -26,7 +27,7 @@ private:
     QAction* undo_;
     QAction* redo_;
 
-    std::shared_ptr<cstruct::Company> company;
+    std::shared_ptr <cstruct::Company> company;
 
 public:
     explicit STaskPool(QObject* parent = nullptr);
@@ -40,8 +41,7 @@ public:
     signals:
 
 public
-    slots:
-    void addTask();
+    slots: void addTask();
 
     void addDepartment(std::string &);
 
@@ -52,6 +52,14 @@ public
     void deleteWorker(std::string &, std::string &);
 
     void changeDepartmentName(std::string &, std::string &);
+
+    void changeWorkerAll(std::string &, std::string &, std::string &, std::string &, int);
+
+    void changeWorkerName(std::string &, std::string &, std::string &);
+
+    void changeWorkerPosition(std::string &, std::string &, std::string &);
+
+    void changeWorkerSalary(std::string &, std::string &, int);
 };
 
 

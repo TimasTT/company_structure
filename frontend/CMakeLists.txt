@@ -24,6 +24,9 @@ add_library(main_window STATIC
     change_department_name_window/change_department_name.cpp
     change_department_name_window/change_department_name.h
     change_department_name_window/change_department_name.ui
+    change_worker_window/change_worker.cpp
+    change_worker_window/change_worker.h
+    change_worker_window/change_worker.ui
     )
 target_include_directories(main_window PUBLIC
     main_window/)

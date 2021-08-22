@@ -9,14 +9,14 @@
 #include "add_worker_window/add_worker_window.h"
 #include "delete_worker_window/delete_worker.h"
 #include "change_department_name_window/change_department_name.h"
+#include "change_worker_window/change_worker.h"
 
-MainWindow::MainWindow(STaskPool* pool_, QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow) {
+MainWindow::MainWindow(STaskPool* pool_, QWidget* parent)
+        : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     pool = pool_;
     pool->setWidget(ui->listWidget);
-    QList<QAction*> list;
+    QList < QAction * > list;
     list.push_back(pool->getUndoCommand());
     list.push_back(pool->getRedoCommand());
     ui->menuEdit->addActions(list);
@@ -50,13 +50,12 @@ void MainWindow::on_pushButton_3_clicked() {
     addWorkerWindow.setModal(true);
     addWorkerWindow.exec();
 
-    pool->addWorker(addWorkerWindow.getDepartmentName(), addWorkerWindow.getWorkerName(),
-                    addWorkerWindow. getWorkerPosition(), addWorkerWindow.getWorkerSalary());
+    pool->addWorker(addWorkerWindow.getDepartmentName(), addWorkerWindow.getWorkerName(), addWorkerWindow.getWorkerPosition(),
+                    addWorkerWindow.getWorkerSalary());
 }
 
 
-void MainWindow::on_pushButton_4_clicked()
-{
+void MainWindow::on_pushButton_4_clicked() {
     delete_worker deleteWorkerWindow;
     deleteWorkerWindow.setModal(true);
     deleteWorkerWindow.exec();
@@ -65,12 +64,20 @@ void MainWindow::on_pushButton_4_clicked()
 }
 
 
-void MainWindow::on_pushButton_5_clicked()
-{
+void MainWindow::on_pushButton_5_clicked() {
     change_department_name changeDepartmentNameWindow;
     changeDepartmentNameWindow.setModal(true);
     changeDepartmentNameWindow.exec();
 
     pool->changeDepartmentName(changeDepartmentNameWindow.getDepartmentLastName(), changeDepartmentNameWindow.getDepartmentNewName());
+}
+
+
+void MainWindow::on_pushButton_6_clicked() {
+    change_worker changeWorkerWindow(pool);
+    changeWorkerWindow.setModal(true);
+    changeWorkerWindow.exec();
+
+    //pool->changeWorkerWinodw();
 }
 

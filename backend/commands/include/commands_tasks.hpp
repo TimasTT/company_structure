@@ -13,7 +13,7 @@ class QListWidget;
 
 class ShowCompany {
 public:
-    ShowCompany(const std::shared_ptr<cstruct::Company>&, QListWidget*);
+    ShowCompany(const std::shared_ptr <cstruct::Company> &, QListWidget*);
 };
 
 
@@ -25,10 +25,10 @@ private:
 
     std::string departmentName;
 
-    std::shared_ptr<cstruct::Company> company;
+    std::shared_ptr <cstruct::Company> company;
 
 public:
-    AddDepartment(QListWidget*, int, std::string &, std::shared_ptr<cstruct::Company>&);
+    AddDepartment(QListWidget*, int, std::string &, std::shared_ptr <cstruct::Company> &);
 
     void undo();
 
@@ -44,10 +44,10 @@ private:
 
     std::string departmentName;
 
-    std::shared_ptr<cstruct::Company> company;
+    std::shared_ptr <cstruct::Company> company;
 
 public:
-    DeleteDepartment(QListWidget*, int, std::string &, std::shared_ptr<cstruct::Company>&);
+    DeleteDepartment(QListWidget*, int, std::string &, std::shared_ptr <cstruct::Company> &);
 
     void undo();
 
@@ -69,10 +69,10 @@ private:
 
     int workerSalary;
 
-    std::shared_ptr<cstruct::Company> company;
+    std::shared_ptr <cstruct::Company> company;
 
 public:
-    AddWorker(QListWidget*, int, std::string &, std::string &, std::string &, int, std::shared_ptr<cstruct::Company>&);
+    AddWorker(QListWidget*, int, std::string &, std::string &, std::string &, int, std::shared_ptr <cstruct::Company> &);
 
     void undo();
 
@@ -94,10 +94,10 @@ private:
 
     int workerSalary;
 
-    std::shared_ptr<cstruct::Company> company;
+    std::shared_ptr <cstruct::Company> company;
 
 public:
-    DeleteWorker(QListWidget*, int, std::string &, std::string &, std::shared_ptr<cstruct::Company>&);
+    DeleteWorker(QListWidget*, int, std::string &, std::string &, std::shared_ptr <cstruct::Company> &);
 
     void undo();
 
@@ -115,10 +115,10 @@ private:
 
     std::string departmentNewName;
 
-    std::shared_ptr<cstruct::Company> company;
+    std::shared_ptr <cstruct::Company> company;
 
 public:
-    ChangeDepartmentName(QListWidget*, int, std::string &, std::string &, std::shared_ptr<cstruct::Company>&);
+    ChangeDepartmentName(QListWidget*, int, std::string &, std::string &, std::shared_ptr <cstruct::Company> &);
 
     void undo();
 
@@ -126,7 +126,7 @@ public:
 };
 
 
-class ChangeWorker: public QUndoCommand {
+class ChangeWorkerAll: public QUndoCommand {
 private:
     QListWidget* widget;
 
@@ -146,10 +146,84 @@ private:
 
     int workerNewSalary;
 
-    std::shared_ptr<cstruct::Company> company;
+    std::shared_ptr <cstruct::Company> company;
 
 public:
-    ChangeWorker(QListWidget*, int, std::string &, std::string &, std::string&, std::string &, int, std::shared_ptr<cstruct::Company>&);
+    ChangeWorkerAll(QListWidget*, int, std::string &, std::string &, std::string &, std::string &, int,
+                    std::shared_ptr <cstruct::Company> &);
+
+    void undo();
+
+    void redo();
+};
+
+
+class ChangeWorkerName: public QUndoCommand {
+private:
+    QListWidget* widget;
+
+    int task_id;
+
+    std::string departmentName;
+
+    std::string workerLastName;
+
+    std::string workerNewName;
+
+    std::shared_ptr <cstruct::Company> company;
+
+public:
+    ChangeWorkerName(QListWidget*, int, std::string &, std::string &, std::string &, std::shared_ptr <cstruct::Company> &);
+
+    void undo();
+
+    void redo();
+};
+
+
+class ChangeWorkerPosition: public QUndoCommand {
+private:
+    QListWidget* widget;
+
+    int task_id;
+
+    std::string departmentName;
+
+    std::string workerName;
+
+    std::string workerLastPosition;
+
+    std::string workerNewPosition;
+
+    std::shared_ptr <cstruct::Company> company;
+
+public:
+    ChangeWorkerPosition(QListWidget*, int, std::string &, std::string &, std::string &, std::shared_ptr <cstruct::Company> &);
+
+    void undo();
+
+    void redo();
+};
+
+
+class ChangeWorkerSalary: public QUndoCommand {
+private:
+    QListWidget* widget;
+
+    int task_id;
+
+    std::string departmentName;
+
+    std::string workerName;
+
+    int workerLastSalary;
+
+    int workerNewSalary;
+
+    std::shared_ptr <cstruct::Company> company;
+
+public:
+    ChangeWorkerSalary(QListWidget*, int, std::string &, std::string &, int, std::shared_ptr <cstruct::Company> &);
 
     void undo();
 
